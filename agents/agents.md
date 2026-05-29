@@ -513,6 +513,13 @@ From the model's perspective, **nothing changes**. It still sees tool schemas an
 
 A skill might say "use the `notion_search` tool to find the design doc, then..." — and `notion_search` could be coming from an MCP server. The skill teaches the workflow; MCP provides the underlying tool. Most real agents end up with both.
 
+**Which do you reach for?** Ask whether the agent is missing an *ability* or missing *know-how*:
+
+- It **can't do the thing at all** — reach a system it has no access to, call an API behind auth, query a private database → it needs a **tool** (a local function, or an MCP server if you want that tool reusable across agents or maintained by someone else).
+- It **can already do the thing but does it badly** — picks the wrong library, wastes turns, doesn't know your team's conventions → it needs a **skill**.
+
+Adding a `bash` tool gave our agent a huge range of new abilities at once; a skill then teaches it to use them well. That's why most agents grow both — and why a new capability is sometimes code and sometimes just a markdown file.
+
 We didn't introduce MCP earlier because it's a deployment and distribution concern, not a conceptual one — the mental model of "tools are just functions" is more important to nail first. Once you've built a few agents and start wanting tools you didn't write yourself, MCP is a natural next step — the [MCP course](../mcp/mcp.md) walks you from a plain function to a server any agent can connect to.
 
 ## Further reading
