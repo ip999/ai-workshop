@@ -67,3 +67,7 @@ This section exists because every tutorial in this series is one slice of a bigg
 ## A note on cross-references
 
 Tutorials in this repo are designed to be read in any order, but they reference each other freely. When linking to a sibling tutorial, use a relative path (`../agents/agents.md`) and a one-line description so the reader knows whether they need to read it first.
+
+## A note on the capstone
+
+The capstone ([capstone/capstone.md](capstone/capstone.md)) is intentionally exempt from the structure above. It's a guided read of one runnable program, not a type-along, so it drops the numbered Parts, the Recap, and the "But what about X?" section in favour of descriptive `##` sections. It keeps the prose voice and the deliberately-minimal ethos, but its job is to show how the concepts *compose* rather than to teach one in isolation. Don't reshape it into the tutorial skeleton.
