@@ -51,24 +51,21 @@ The first launch spends a few seconds starting the container and installing `cur
 ```
 agent ready — type a request, Ctrl-D to quit.
 
-you> i prefer tabs over spaces and my name is sam
-  · remember(User's name is Sam.)
-  · remember(Sam prefers tabs over spaces for indentation.)
+you> what's the weather in london today? celsius please
+  · bash(curl -s "https://api.open-meteo.com/v1/forecast?latitude=51.51&longitude=-0.13&current_weather=true&temperature_unit=celsius" -o /workspace/weather.json)
+  · read_file(/workspace/weather.json)
+  · remember(User prefers temperatures in Celsius.)
 
-agent> Noted, Sam — tabs it is.
-
-you> write a fizzbuzz script to /workspace/fizzbuzz.py and run it for 1..15
-  · write_file(/workspace/fizzbuzz.py)
-  · bash(python /workspace/fizzbuzz.py)
-
-agent> Done. It printed 1, 2, Fizz, 4, Buzz ... 14, FizzBuzz. The file is at
-/workspace/fizzbuzz.py (on your host: /tmp/agent-work/fizzbuzz.py).
+agent> Right now in London it's 24.6 °C, partly cloudy, wind 9 km/h. The raw
+response is saved at /workspace/weather.json (on your host: /tmp/agent-work/).
 
 you> ^D
 bye.
 ```
 
-Quit, restart, and the first thing it does is reload `agent_memory.md` — so it still knows you're Sam and still indents with tabs. That round-trip, surviving a full restart, is the payoff of the whole series.
+One request touched everything: it reached the network through the shell (`curl`), wrote and read a file, and noticed a durable preference worth keeping (`remember`). That's the same `get_weather` example that opened the [agents](../agents/agents.md) and [MCP](../mcp/mcp.md) courses — except nobody wrote a weather tool this time. The agent fetched it itself with the one shell it has.
+
+Now quit, restart, and ask about the weather somewhere else. The first thing it does on startup is reload `agent_memory.md` — so it gives you Celsius without asking. That round-trip, surviving a full restart, is the payoff of the whole series.
 
 ## What's deliberately left out
 
