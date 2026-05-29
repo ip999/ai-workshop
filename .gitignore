@@ -1,0 +1,5 @@
+__pycache__/
+*.pyc
+
+# Capstone runtime artifacts
+agent_memory.md

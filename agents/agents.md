@@ -468,6 +468,8 @@ What happens when you run this: the agent sees the skill index in its system pro
 
 You just added a capability *without writing a single tool*. To add another (say, video editing), you make a folder, write a SKILL.md, maybe include a helper script. The agent picks it up on the next run.
 
+Skills are a deep topic in their own right — writing descriptions that reliably trigger, bundling code, indexing hundreds of them. The [skills course](../skills/skills.md) covers all of it.
+
 ## Recap
 
 You've now built three things:
@@ -482,7 +484,8 @@ That's enough to build real things. The next steps, once you want to go further:
 - **More base tools.** `read_file`, `write_file`, `edit_file`, `glob`, `grep` as conveniences alongside `bash`. The model writes shorter, clearer code with them.
 - **Safety rails.** Cap iterations (`for _ in range(25)` instead of `while True`). Truncate large tool outputs. Decide what network access the sandbox gets. Wrap each tool call in try/except and feed the exception message back to the model as the tool result — it will often recover and try a different approach.
 - **The Responses API.** OpenAI's newer API keeps conversation state on their servers and preserves reasoning across turns. Worth learning once you've felt the cost of resending history.
-- **Real skills.** Skills get genuinely powerful when they encode tribal knowledge — "in our codebase, run tests with X", "our deployments work like Y". Each one is just a markdown file.
+- **Real skills.** Skills get genuinely powerful when they encode tribal knowledge — "in our codebase, run tests with X", "our deployments work like Y". Each one is just a markdown file. See the [skills course](../skills/skills.md) for the full treatment.
+- **Memory.** This agent forgets everything when the program exits, and its context grows without bound during a long session. The [memory course](../memory/memory.md) covers both — compaction for the conversation, a file on disk for what should outlive it.
 
 ## But what about MCP?
 
@@ -510,7 +513,7 @@ From the model's perspective, **nothing changes**. It still sees tool schemas an
 
 A skill might say "use the `notion_search` tool to find the design doc, then..." — and `notion_search` could be coming from an MCP server. The skill teaches the workflow; MCP provides the underlying tool. Most real agents end up with both.
 
-We didn't introduce MCP earlier because it's a deployment and distribution concern, not a conceptual one — the mental model of "tools are just functions" is more important to nail first. Once you've built a few agents and start wanting tools you didn't write yourself, MCP is the next thing to learn.
+We didn't introduce MCP earlier because it's a deployment and distribution concern, not a conceptual one — the mental model of "tools are just functions" is more important to nail first. Once you've built a few agents and start wanting tools you didn't write yourself, MCP is the next thing to learn — the [MCP course](../mcp/mcp.md) walks you from a plain function to a server any agent can connect to.
 
 ## Further reading
 

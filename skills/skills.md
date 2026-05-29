@@ -33,10 +33,11 @@ response = client.chat.completions.create(
     model="gpt-5-mini",
     messages=[
         {"role": "system", "content": "When summarizing CSVs, always report row count, column names, and one example row."},
-        {"role": "user", "content": "Summarize sales.csv"},
+        {"role": "user", "content": "Summarize this CSV:\nname,age\nAda,36\nGrace,45"},
     ],
 )
 print(response.choices[0].message.content)
+# Rows: 2. Columns: name, age. Example row: Ada, 36.
 ```
 
 A few things to internalise:
