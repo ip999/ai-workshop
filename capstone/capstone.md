@@ -34,6 +34,38 @@ the message list (in memory)
 - **Memory lives on the host, and you own it.** `remember` is a plain Python function that appends to `agent_memory.md` — it is *not* a sandbox command. The agent can write facts but can't reach outside `/workspace` to tamper with anything else. That separation is deliberate.
 - **The message list is short-term and disposable.** It's compacted when long and thrown away when you quit. Only the memory file persists.
 
+## The loop is the smallest part
+
+Read [agent.py](agent.py) with this in mind: of its ~170 lines of code, the agent *itself* is about two dozen, and most of those are progress prints and safety rails. Strip them away and the entire agent is this:
+
+```python
+def run_turn(messages):
+    while True:
+        msg = client.chat.completions.create(
+            model=MODEL, messages=messages, tools=TOOLS,
+        ).choices[0].message
+        messages.append(msg)
+
+        if not msg.tool_calls:           # nothing requested -> the agent is done
+            return msg.content
+
+        for call in msg.tool_calls:      # otherwise run each tool, append results, loop
+            args = json.loads(call.function.arguments)
+            result = DISPATCH[call.function.name](**args)
+            messages.append({"role": "tool", "tool_call_id": call.id, "content": result})
+```
+
+That's the same loop from [agents.md Part 4](../agents/agents.md), unchanged. The `run_turn` in `agent.py` adds only three things to it, none of which alter its shape: an iteration cap (`for _ in range(25)` instead of `while True`), a line that prints each tool call so you can watch it work, and a `try/except` that feeds tool errors back to the model instead of crashing.
+
+Everything else in the file is scaffolding *around* that loop:
+
+- **the sandbox** — starting the container and mounting `/workspace` (~25 lines)
+- **the tools** — four small functions, plus the JSON schemas that describe them to the model (the schemas alone are longer than the loop)
+- **memory** — loading the file and compacting the transcript (~30 lines)
+- **the REPL** — reading your input and printing replies (~18 lines)
+
+The harness is small on purpose. The capability lives in the model deciding what to do; the code just runs the loop and carries the tools, sandbox, and memory along for the ride.
+
 ## Running it
 
 You'll need Docker running, an OpenAI key, and the SDK:
