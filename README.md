@@ -2,6 +2,14 @@
 
 A small collection of hands-on intros to building LLM agents, plus a capstone that wires the ideas together. Each tutorial teaches **one concept** through the smallest code that demonstrates it — no error handling, no abstractions, just the *shape* of the idea. They're written to be read in any order, but the order below builds most naturally.
 
+## Prerequisites
+
+- **Python 3.10+**
+- **An OpenAI API key** in `OPENAI_API_KEY` — every tutorial except the MCP one calls the OpenAI API.
+- **Docker** — needed for the sandboxed-shell examples ([agents.md](agents/agents.md) Part 6 onward) and the [capstone](capstone/capstone.md). The earlier tutorials run without it.
+
+Each tutorial lists its own `pip install` line at the top, since the dependencies vary (the MCP course uses FastMCP and httpx; the rest just need `openai`).
+
 ## The tutorials
 
 1. **[From Completions to Agents](agents/agents.md)** — start here. What an "agent" actually is: a model, some tools, and a loop. Builds up to an agent with a sandboxed shell and a folder of skills.
