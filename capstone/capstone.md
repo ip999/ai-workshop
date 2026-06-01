@@ -2,7 +2,7 @@
 
 The other pieces in this repo each teach one idea in isolation. This one wires them into a single program you can actually talk to: a small interactive agent with a sandboxed shell, a few file tools, and a memory that survives between runs. It's the smallest honest sketch of a coding-style assistant — a stripped-down cousin of the agents people run in their terminals.
 
-Unlike the tutorials, this isn't a type-along. The whole thing is in [agent.py](agent.py); read it top to bottom in one sitting (about 180 lines) and this page explains how the parts fit.
+Unlike the tutorials, this isn't a type-along. The whole thing is in [agent.py](agent.py); read it top to bottom in one sitting (~220 lines, ~170 of them code) and this page explains how the parts fit.
 
 It stays deliberately minimal: no auth, no streaming, no scheduling, error handling only where the loop would otherwise crash. The goal is to see how the concepts *compose*, not to ship it.
 
