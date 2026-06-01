@@ -327,6 +327,7 @@ The two combine well. A skill can *use* RAG ("to find similar past tickets, quer
 - **[agentskills.io](https://agentskills.io)** — the open specification for the SKILL.md format, with a quickstart and a directory of agents that support it.
 - **[Equipping agents for the real world with Agent Skills](https://claude.com/blog/equipping-agents-for-the-real-world-with-agent-skills)** — Anthropic's deep dive on progressive disclosure and why a filesystem beats a tool-per-task approach.
 - **[anthropics/skills](https://github.com/anthropics/skills)** — Anthropic's reference repository of working skills. Read a few SKILL.md files end-to-end to see what good ones look like.
+- **[The Complete Guide to Building Skills for Claude](https://resources.anthropic.com/hubfs/The-Complete-Guide-to-Building-Skill-for-Claude.pdf)** (PDF) — Anthropic's longer guide, including the skills-vs-MCP "connectivity vs knowledge" framing this lesson borrows from.
 - **[Cursor rules documentation](https://docs.cursor.com/context/rules)** — a similar (but always-loaded) take on file-based agent instructions, useful contrast.
 
 Skills are how an agent stops being a stranger to your team and starts being a colleague. Each markdown file is a piece of institutional knowledge that no longer has to be re-explained in every conversation.
