@@ -238,3 +238,5 @@ At that scale, memory *becomes* a retrieval problem: embed each remembered fact,
 - **[Letta](https://docs.letta.com)** — the open-source framework descended from MemGPT, if you'd rather adopt a memory system than hand-roll one.
 
 An agent without memory meets you fresh every time. Memory is what turns a capable tool into one that knows you.
+
+**Next:** [Bringing It All Together](../capstone/capstone.md) — the final lesson, where the loop, a sandboxed shell, tools, and memory become one runnable agent.

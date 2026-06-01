@@ -62,11 +62,11 @@ Every tutorial follows the same skeleton:
 
 ## A note on the "But what about X?" section
 
-This section exists because every tutorial in this series is one slice of a bigger picture, and a reader who's been paying attention will finish with a sibling concept on their mind. Address it head-on rather than leaving them to wonder. Keep it short — a few paragraphs that situate the sibling concept relative to what was just taught, and explain why it wasn't introduced earlier.
+This section exists because every tutorial in this series is one slice of a bigger picture, and a reader who's been paying attention will finish with a sibling concept on their mind. Address it head-on rather than leaving them to wonder. Keep it short — a few paragraphs that situate the sibling concept relative to what was just taught, and explain why it wasn't introduced earlier. Reserve it for concepts the course does *not* cover in a later lesson (e.g. RAG, or MCP's resources and prompts) — for the topic that comes next, use the **Next:** pointer instead, not a "But what about X?" aside.
 
 ## A note on cross-references
 
-Tutorials in this repo are designed to be read in any order, but they reference each other freely. When linking to a sibling tutorial, use a relative path (`../agents/agents.md`) and a one-line description so the reader knows whether they need to read it first.
+The tutorials form a linear course — agents → mcp → skills → memory → capstone — and each builds on the ones before it. Link **backward** to a prerequisite when you lean on it, and close each lesson with a one-line **Next:** pointer to the lesson that follows. Use a relative path (`../mcp/mcp.md`) and a one-line description. Don't link sideways or skip ahead in a way that implies the course can be read in any order.
 
 ## A note on the capstone
 

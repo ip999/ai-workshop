@@ -1,6 +1,6 @@
 # AI Workshop
 
-A small collection of hands-on intros to building LLM agents, plus a capstone that wires the ideas together. Each tutorial teaches **one concept** through the smallest code that demonstrates it — no error handling, no abstractions, just the *shape* of the idea. They're written to be read in any order, but the order below builds most naturally.
+A small collection of hands-on intros to building LLM agents, plus a capstone that wires the ideas together. Each tutorial teaches **one concept** through the smallest code that demonstrates it — no error handling, no abstractions, just the *shape* of the idea. It's a linear course: each lesson builds on the one before, so read them in order.
 
 ## Run it in the browser (no local setup)
 
@@ -23,12 +23,14 @@ Each tutorial lists its own `pip install` line at the top, since the dependencie
 
 ## The tutorials
 
-1. **[From Completions to Agents](agents/agents.md)** — start here. What an "agent" actually is: a model, some tools, and a loop. Builds up to an agent with a sandboxed shell and a folder of skills.
-2. **[From a System Prompt to a Skill](skills/skills.md)** — give an agent durable, reusable knowledge it loads from disk on demand, instead of one ever-growing system prompt.
-3. **[From a Function to an MCP Server](mcp/mcp.md)** — expose your tools over the Model Context Protocol so any MCP-compatible agent can use them.
-4. **[From a Message List to Memory](memory/memory.md)** — short-term memory (compaction) and long-term memory (a file the agent writes), so an agent stays coherent and remembers you across sessions.
+The lessons build the agent in layers — tools, then instructions, then state:
 
-Tutorials 2–4 each build on the agent loop from the first, but stand alone otherwise.
+1. **[From Completions to Agents](agents/agents.md)** — start here. What an "agent" actually is: a model, some tools, and a loop. Ends with an agent driving a sandboxed shell.
+2. **[From a Function to an MCP Server](mcp/mcp.md)** — where tools come from when you didn't write them: expose tools over the Model Context Protocol so any agent can use them.
+3. **[From a System Prompt to a Skill](skills/skills.md)** — give the agent durable, reusable know-how it loads from disk on demand, instead of an ever-growing system prompt.
+4. **[From a Message List to Memory](memory/memory.md)** — short-term memory (compaction) and long-term memory (a file the agent writes), so the agent stays coherent and remembers you across sessions.
+
+Each lesson assumes the ones before it and ends pointing to the next.
 
 ## The capstone
 

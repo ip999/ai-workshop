@@ -244,3 +244,5 @@ Tools are the most common and the most useful, which is why we focused on them. 
 - **[modelcontextprotocol/servers](https://github.com/modelcontextprotocol/servers)** — a reference collection of MCP servers (filesystem, git, GitHub, Slack, Postgres, and more). Read a couple to see how non-trivial servers are structured.
 
 Once a tool is wrapped in MCP, it stops being yours — it becomes a building block any agent ecosystem can pick up.
+
+**Next:** [From a System Prompt to a Skill](../skills/skills.md) — tools give an agent abilities; next we give it the know-how to use them well.
