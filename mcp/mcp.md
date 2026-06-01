@@ -207,6 +207,40 @@ async with Client("weather_mcp.py") as client:
 
 From here, wiring this into an OpenAI tool-calling loop is mechanical: the schemas from `list_tools()` become the `tools=` argument, and when the model emits a tool call you forward it to `client.call_tool()`. The shape of the agent loop is unchanged.
 
+**What's actually on the wire.** `list_tools()` and `call_tool()` are thin wrappers around JSON-RPC messages the client and server exchange. (A real session opens with an `initialize` handshake first; we'll skip that to focus on the two calls that matter.) Asking for the tool list is one message each way:
+
+```json
+{ "jsonrpc": "2.0", "id": 1, "method": "tools/list" }
+```
+```json
+{ "jsonrpc": "2.0", "id": 1, "result": { "tools": [
+  {
+    "name": "get_weather",
+    "description": "Get the current weather for a city.",
+    "inputSchema": {
+      "type": "object",
+      "properties": { "city": { "type": "string" } },
+      "required": ["city"],
+      "additionalProperties": false
+    }
+  }
+] } }
+```
+
+The server generated that definition from your function — the `name` from the function, the `description` from the docstring, the `inputSchema` from the type hints. It's the same tool schema you hand-wrote in [agents.md Part 3](../agents/agents.md), except you didn't write it. Calling the tool is one more round-trip:
+
+```json
+{ "jsonrpc": "2.0", "id": 2, "method": "tools/call",
+  "params": { "name": "get_weather", "arguments": { "city": "Paris" } } }
+```
+```json
+{ "jsonrpc": "2.0", "id": 2, "result": {
+  "content": [ { "type": "text", "text": "It's 18°C and cloudy in Paris." } ]
+} }
+```
+
+The model never sees this plumbing — it just sees tool schemas and emits tool calls, exactly as in the agents course. MCP is the layer that carries these messages between your agent and the server.
+
 ## Recap
 
 You've now built three things:
