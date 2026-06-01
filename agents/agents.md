@@ -25,6 +25,7 @@ We'll use OpenAI's API throughout. Examples are deliberately minimal — no erro
 A completion is one round-trip. You send some text, the model sends some text back. That's it.
 
 ```python
+# completion.py
 from openai import OpenAI
 
 client = OpenAI()
@@ -51,6 +52,7 @@ A few things to internalise:
 Since the model has no memory, *you* are the memory. To have a conversation, you keep appending to the `messages` list yourself.
 
 ```python
+# conversation.py
 from openai import OpenAI
 
 client = OpenAI()
@@ -82,6 +84,7 @@ A completion can only produce text. But what if the model needs to do something 
 A tool is just a Python function plus a JSON description of how to call it. The model never runs your code; it just emits a structured request saying "please call this function with these arguments." You run the function and send the result back.
 
 ```python
+# weather_tool.py
 from openai import OpenAI
 import json
 
@@ -126,6 +129,7 @@ print(msg)
 Notice the model didn't answer. Instead of `content`, the response has `tool_calls` — a request to run `get_weather(city="Paris")`. We have to actually run it ourselves, then send the result back as a new message.
 
 ```python
+# weather_tool.py (continued)
 # Append the model's tool-call message to history
 messages.append(msg)
 
@@ -161,6 +165,7 @@ Here's the insight that turns "a model with tools" into "an agent":
 The answer is: don't ask the model just once. Put the whole thing in a loop. Keep calling the model until it stops requesting tools.
 
 ```python
+# agent.py
 from openai import OpenAI
 import json
 
@@ -273,6 +278,7 @@ docker exec agent-sandbox bash -c "apt-get update -qq && apt-get install -y -qq 
 Now the agent loop, with a single `bash` tool:
 
 ```python
+# shell_agent.py
 from openai import OpenAI
 import json
 import subprocess
@@ -303,7 +309,11 @@ tools = [{
 }]
 
 messages = [
-    {"role": "system", "content": "You are an agent with access to a sandboxed Linux shell. Use the bash tool to accomplish tasks. The working directory is /workspace."},
+    {"role": "system", "content": (
+        "You are an agent with access to a sandboxed Linux shell. "
+        "Use the bash tool to accomplish tasks. "
+        "The working directory is /workspace."
+    )},
     {"role": "user", "content": "Create a file called hello.txt containing the first 10 prime numbers, one per line."},
 ]
 print(f"user: {messages[1]['content']}\n")

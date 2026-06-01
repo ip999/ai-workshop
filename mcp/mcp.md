@@ -25,6 +25,7 @@ We'll use FastMCP throughout. Examples are deliberately minimal — no error han
 A function is one input, one output. You call it, you get a result. That's it.
 
 ```python
+# weather.py
 def get_weather(city):
     return f"It's 18°C and cloudy in {city}."
 
@@ -43,6 +44,7 @@ A few things to internalise:
 The most common way to expose a function over a network is HTTP. FastAPI lets you do this with a single decorator.
 
 ```python
+# weather_api.py
 from fastapi import FastAPI
 
 app = FastAPI()
@@ -52,7 +54,7 @@ def get_weather(city: str):
     return f"It's 18°C and cloudy in {city}."
 ```
 
-Save as `weather_api.py` and run:
+Save and run it:
 
 ```
 uvicorn weather_api:app --port 8000
@@ -78,6 +80,7 @@ That last point is the gap MCP fills.
 MCP — Model Context Protocol — is a standard for exposing tools to agents. FastMCP is to MCP roughly what FastAPI is to HTTP: a decorator-driven library that wraps your functions.
 
 ```python
+# weather_mcp.py
 from fastmcp import FastMCP
 
 mcp = FastMCP("weather")
@@ -90,7 +93,7 @@ if __name__ == "__main__":
     mcp.run()
 ```
 
-Save as `weather_mcp.py` and run:
+Save and run it:
 
 ```
 python weather_mcp.py
@@ -120,6 +123,7 @@ What did FastMCP do that FastAPI didn't? It made the tool *discoverable in a way
 A hardcoded weather string isn't very useful. Let's swap in a real one. [wttr.in](https://wttr.in) is a free weather service that takes a city in the URL and returns a one-line summary.
 
 ```python
+# weather_mcp.py
 from fastmcp import FastMCP
 import httpx
 
@@ -151,6 +155,7 @@ A server can expose any number of tools. Each one is just another decorated func
 Let's add a second tool that hits [open-notify](http://open-notify.org), which reports who's currently aboard the International Space Station.
 
 ```python
+# weather_mcp.py
 from fastmcp import FastMCP
 import httpx
 
@@ -197,12 +202,17 @@ Restart the client and the two tools appear. Ask it "what's the weather in Paris
 For a programmatic agent like the loop we built in the previous course, you'd connect using FastMCP's client:
 
 ```python
+# client.py
+import asyncio
 from fastmcp import Client
 
-async with Client("weather_mcp.py") as client:
-    tools = await client.list_tools()
-    result = await client.call_tool("get_weather", {"city": "Paris"})
-    print(result)
+async def main():
+    async with Client("weather_mcp.py") as client:
+        tools = await client.list_tools()
+        result = await client.call_tool("get_weather", {"city": "Paris"})
+        print(result)
+
+asyncio.run(main())
 ```
 
 From here, wiring this into an OpenAI tool-calling loop is mechanical: the schemas from `list_tools()` become the `tools=` argument, and when the model emits a tool call you forward it to `client.call_tool()`. The shape of the agent loop is unchanged.
