@@ -184,6 +184,7 @@ tools = [{
 }]
 
 messages = [{"role": "user", "content": "What's the weather in Paris and Tokyo?"}]
+print(f"user: {messages[0]['content']}")
 
 # THE AGENT LOOP
 while True:
@@ -203,12 +204,25 @@ while True:
     # Otherwise, run each tool call and append the results, then loop.
     for call in msg.tool_calls:
         args = json.loads(call.function.arguments)
+        print(f"→ model wants: {call.function.name}({args})")
         result = get_weather(**args)
+        print(f"← tool result: {result}")
         messages.append({
             "role": "tool",
             "tool_call_id": call.id,
             "content": result,
         })
+```
+
+Run it and you can watch the round-trip the prose below describes:
+
+```
+# user: What's the weather in Paris and Tokyo?
+# → model wants: get_weather({'city': 'Paris'})
+# ← tool result: It's 18°C and cloudy in Paris.
+# → model wants: get_weather({'city': 'Tokyo'})
+# ← tool result: It's 18°C and cloudy in Tokyo.
+# It's 18°C and cloudy in both Paris and Tokyo.
 ```
 
 That's an agent. The model called `get_weather` twice (once for Paris, once for Tokyo), saw both results, then wrote a final reply. The loop exits because the final reply has no tool calls.
