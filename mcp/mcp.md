@@ -203,12 +203,16 @@ For a programmatic agent like the loop we built in the previous course, you'd co
 
 ```python
 # client.py
+import asyncio
 from fastmcp import Client
 
-async with Client("weather_mcp.py") as client:
-    tools = await client.list_tools()
-    result = await client.call_tool("get_weather", {"city": "Paris"})
-    print(result)
+async def main():
+    async with Client("weather_mcp.py") as client:
+        tools = await client.list_tools()
+        result = await client.call_tool("get_weather", {"city": "Paris"})
+        print(result)
+
+asyncio.run(main())
 ```
 
 From here, wiring this into an OpenAI tool-calling loop is mechanical: the schemas from `list_tools()` become the `tools=` argument, and when the model emits a tool call you forward it to `client.call_tool()`. The shape of the agent loop is unchanged.

@@ -102,7 +102,6 @@ When summarizing a CSV:
 Now the agent. We give it two tools: `read_file` for loading skills, and `bash` for actually doing work.
 
 ```python
-# skill_agent.py
 from openai import OpenAI
 import json
 import subprocess
