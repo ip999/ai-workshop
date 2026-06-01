@@ -266,6 +266,9 @@ docker run -d --name agent-sandbox --rm \
     -v /tmp/agent-work:/workspace \
     -w /workspace \
     python:3.12-slim sleep infinity
+
+# The slim image has no curl; install it so the agent can fetch from the web.
+docker exec agent-sandbox bash -c "apt-get update -qq && apt-get install -y -qq curl"
 ```
 
 Now the agent loop, with a single `bash` tool:
@@ -364,6 +367,9 @@ docker run -d --name agent-sandbox --rm \
     -v "$(pwd)/skills:/skills:ro" \
     -w /workspace \
     python:3.12-slim sleep infinity
+
+# Reinstall curl — restarting the container starts from the bare slim image again.
+docker exec agent-sandbox bash -c "apt-get update -qq && apt-get install -y -qq curl"
 ```
 
 A skill file (`./skills/pdf/SKILL.md`) looks like this:
