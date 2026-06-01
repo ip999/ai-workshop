@@ -224,7 +224,7 @@ That's enough to make an agent feel continuous. The next steps, once you want to
 
 ## But what about RAG?
 
-If you read the skills course, you've already met retrieval-augmented generation — and memory is where it comes back. Both load context on demand instead of stuffing everything into the prompt, so the line between them is worth drawing.
+The skills course already introduced retrieval-augmented generation — and memory is where it comes back. Both load context on demand instead of stuffing everything into the prompt, so the line between them is worth drawing.
 
 Everything in this course loads your *entire* memory: the whole message list, the whole summary, the whole file, pasted into the prompt every turn. That's perfect while memory is small. But once an agent has logged thousands of facts from months of conversations, you can't paste them all in — for the same reason you couldn't list ten thousand documents in a skill index ([skills.md's RAG note](../skills/skills.md) makes the same point).
 

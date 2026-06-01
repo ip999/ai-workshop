@@ -1,6 +1,6 @@
 # AI Workshop
 
-A small collection of hands-on intros to building LLM agents, plus a capstone that wires the ideas together. Each tutorial teaches **one concept** through the smallest code that demonstrates it — no error handling, no abstractions, just the *shape* of the idea. It's a linear course: each lesson builds on the one before, so read them in order.
+A hands-on course on building LLM agents, plus a capstone that wires the ideas together. Each lesson teaches **one concept** through the smallest code that demonstrates it — no error handling, no abstractions, just the *shape* of the idea. It's linear: each lesson builds on the one before, so read them in order.
 
 ## Run it in the browser (no local setup)
 
