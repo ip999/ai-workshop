@@ -15,8 +15,9 @@ We'll use OpenAI's API throughout. Examples are deliberately minimal — no erro
 5. [Skills That Ship Code](#part-5-skills-that-ship-code)
 6. [Writing a Description That Triggers](#part-6-writing-a-description-that-triggers)
 7. [Recap](#recap)
-8. [But what about RAG?](#but-what-about-rag)
-9. [Further reading](#further-reading)
+8. [Skills or a tool?](#skills-or-a-tool)
+9. [But what about RAG?](#but-what-about-rag)
+10. [Further reading](#further-reading)
 
 ---
 
@@ -294,6 +295,17 @@ That's enough to give an agent durable, evolvable expertise. The next steps, onc
 - **Auto-installed skills.** Once a team has built a few skills, distributing them as a package or pulling them from a shared repo at agent startup beats copy-pasting folders.
 - **Eval the descriptions.** Run a battery of user requests against your skill index and check which skill the model picks. A description that scores badly is the cheapest thing in the stack to fix.
 
+## Skills or a tool?
+
+You've now seen both halves of extending an agent — tools (including [MCP](../mcp/mcp.md) servers) in the previous lesson, and skills in this one. They're easy to conflate, but they answer different questions:
+
+- A **tool** (a local function, or an MCP server) is *what the agent can do* — reach a system, call an API, query a database. Call it connectivity.
+- A **skill** is *how the agent should do it* — which tool to use for a task, in what order, following which conventions. Call it knowledge.
+
+So they aren't rivals; they stack. If you already have a working tool or MCP server, you've done the hard part — the skill is the layer on top that captures the workflow you already know, so the agent applies it consistently instead of re-deriving it every run. A skill might say "use the `notion_search` tool to find the design doc, then…" — `notion_search` is the capability; the skill is the recipe for using it well.
+
+When you're unsure which you're missing *right now*, ask: is the agent unable to do the thing **at all** (it needs a tool), or able but doing it **badly** — wrong approach, wasted turns, ignorant of your conventions (it needs a skill)? Most real agents grow both.
+
 ## But what about RAG?
 
 If you've worked with retrieval-augmented generation, skills will look familiar — both load context on demand instead of stuffing everything into the prompt. The difference is where the judgment lives.
@@ -315,6 +327,9 @@ The two combine well. A skill can *use* RAG ("to find similar past tickets, quer
 - **[agentskills.io](https://agentskills.io)** — the open specification for the SKILL.md format, with a quickstart and a directory of agents that support it.
 - **[Equipping agents for the real world with Agent Skills](https://claude.com/blog/equipping-agents-for-the-real-world-with-agent-skills)** — Anthropic's deep dive on progressive disclosure and why a filesystem beats a tool-per-task approach.
 - **[anthropics/skills](https://github.com/anthropics/skills)** — Anthropic's reference repository of working skills. Read a few SKILL.md files end-to-end to see what good ones look like.
+- **[The Complete Guide to Building Skills for Claude](https://resources.anthropic.com/hubfs/The-Complete-Guide-to-Building-Skill-for-Claude.pdf)** (PDF) — Anthropic's longer guide, including the skills-vs-MCP "connectivity vs knowledge" framing this lesson borrows from.
 - **[Cursor rules documentation](https://docs.cursor.com/context/rules)** — a similar (but always-loaded) take on file-based agent instructions, useful contrast.
 
 Skills are how an agent stops being a stranger to your team and starts being a colleague. Each markdown file is a piece of institutional knowledge that no longer has to be re-explained in every conversation.
+
+**Next:** [From a Message List to Memory](../memory/memory.md) — skills are knowledge you write *for* the agent; next, memory is knowledge the agent writes for itself.

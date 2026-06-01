@@ -104,7 +104,7 @@ Now quit, restart, and ask about the weather somewhere else. The first thing it 
 Each of these is a natural extension, and each already has a home in this repo:
 
 - **MCP tools.** The agent's tools are all local functions. To use tools from an [MCP server](../mcp/mcp.md), the wiring is mechanical: take the schemas from the client's `list_tools()`, drop them into `TOOLS`, and forward matching calls to `client.call_tool()` instead of the local `DISPATCH`. The loop doesn't change.
-- **Skills.** There's no `/skills` index here. Adding one is exactly [agents.md Part 7](../agents/agents.md): mount a skills folder into the container read-only, list the names and descriptions in the system prompt, and let the agent `cat` the relevant `SKILL.md` on demand.
+- **Skills.** There's no `/skills` index here. Adding one is exactly the [skills course](../skills/skills.md): mount a skills folder into the container read-only, list the names and descriptions in the system prompt, and let the agent `cat` the relevant `SKILL.md` on demand.
 - **Scheduling, multi-agent, auth, streaming.** Real assistants grow these. They're out of scope here on purpose — each would more than double the code.
 
 ## Where to take it next
