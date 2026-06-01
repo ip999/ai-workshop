@@ -177,6 +177,7 @@ messages = [
                                    f"What you already remember:\n{memory}"},
     {"role": "user", "content": "I'm vegetarian and I always deploy on Fridays."},
 ]
+print(f"user: {messages[1]['content']}\n")
 
 # Standard agent loop — see ../agents/agents.md Part 4
 while True:
@@ -184,14 +185,17 @@ while True:
     msg = response.choices[0].message
     messages.append(msg)
     if not msg.tool_calls:
-        print(msg.content)
+        print(f"\nagent: {msg.content}")
         break
     for call in msg.tool_calls:
         result = remember(**json.loads(call.function.arguments))
         print(result)
         messages.append({"role": "tool", "tool_call_id": call.id, "content": result})
+# user: I'm vegetarian and I always deploy on Fridays.
 # Remembered: User is vegetarian.
 # Remembered: User deploys on Fridays.
+#
+# agent: Got it — noted that you're vegetarian and you deploy on Fridays.
 ```
 
 A few things to internalise:

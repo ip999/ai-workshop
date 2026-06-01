@@ -304,6 +304,7 @@ messages = [
     {"role": "system", "content": "You are an agent with access to a sandboxed Linux shell. Use the bash tool to accomplish tasks. The working directory is /workspace."},
     {"role": "user", "content": "Create a file called hello.txt containing the first 10 prime numbers, one per line."},
 ]
+print(f"user: {messages[1]['content']}\n")
 
 while True:
     response = client.chat.completions.create(
@@ -315,7 +316,7 @@ while True:
     messages.append(msg)
 
     if not msg.tool_calls:
-        print(msg.content)
+        print(f"\nagent: {msg.content}")
         break
 
     for call in msg.tool_calls:
@@ -452,6 +453,7 @@ messages = [
     {"role": "system", "content": system_prompt},
     {"role": "user", "content": "Extract the text from /workspace/report.pdf and tell me how many times the word 'revenue' appears."},
 ]
+print(f"user: {messages[1]['content']}\n")
 
 while True:
     response = client.chat.completions.create(
@@ -463,7 +465,7 @@ while True:
     messages.append(msg)
 
     if not msg.tool_calls:
-        print(msg.content)
+        print(f"\nagent: {msg.content}")
         break
 
     for call in msg.tool_calls:
