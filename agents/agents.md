@@ -4,7 +4,7 @@ A short course for developers who are new to LLM APIs — the first lesson of th
 
 We'll use OpenAI's API throughout. Examples are deliberately minimal — no error handling, no abstractions, no production niceties. The point is to see the *shape* of each idea clearly.
 
-**Prerequisites:** Python 3.10+, an OpenAI API key in `OPENAI_API_KEY`, and `pip install openai`.
+**Prerequisites:** Python 3.10+, an OpenAI API key in `OPENAI_API_KEY` (create one at [platform.openai.com/api-keys](https://platform.openai.com/api-keys)), and `pip install openai`.
 
 ## Contents
 

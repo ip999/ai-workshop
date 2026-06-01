@@ -16,7 +16,7 @@ Click the badge to launch a [Codespace](https://github.com/features/codespaces) 
 If you'd rather run locally instead of in Codespaces, you'll need:
 
 - **Python 3.10+**
-- **An OpenAI API key** in `OPENAI_API_KEY` — every tutorial except the MCP one calls the OpenAI API. (This is the one thing Codespaces can't provide for you; the calls cost money against your own account.)
+- **An OpenAI API key** in `OPENAI_API_KEY` — every tutorial except the MCP one calls the OpenAI API. Create one at [platform.openai.com/api-keys](https://platform.openai.com/api-keys). (This is the one thing Codespaces can't provide for you; the calls cost money against your own account.)
 - **Docker** — needed for the sandboxed-shell examples ([agents.md](agents/agents.md) Part 6 onward) and the [capstone](capstone/capstone.md). The earlier tutorials run without it.
 
 Each tutorial lists its own `pip install` line at the top, since the dependencies vary (the MCP course uses FastMCP and httpx; the rest just need `openai`).
