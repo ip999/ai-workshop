@@ -297,12 +297,14 @@ That's enough to give an agent durable, evolvable expertise. The next steps, onc
 
 ## Skills or a tool?
 
-You've now seen both halves of extending an agent — tools (including [MCP](../mcp/mcp.md) servers) in the previous lesson, and skills in this one. They get conflated, so here's the rule for which to reach for. Ask whether the agent is missing an *ability* or missing *know-how*:
+You've now seen both halves of extending an agent — tools (including [MCP](../mcp/mcp.md) servers) in the previous lesson, and skills in this one. They're easy to conflate, but they answer different questions:
 
-- It **can't do the thing at all** — reach a system it has no access to, call an API behind auth, query a private database → it needs a **tool** (a local function, or an MCP server if you want it reusable across agents).
-- It **can already do the thing but does it badly** — picks the wrong library, wastes turns, doesn't know your team's conventions → it needs a **skill**.
+- A **tool** (a local function, or an MCP server) is *what the agent can do* — reach a system, call an API, query a database. Call it connectivity.
+- A **skill** is *how the agent should do it* — which tool to use for a task, in what order, following which conventions. Call it knowledge.
 
-A skill often *uses* a tool: "use the `notion_search` tool to find the design doc, then…" — `notion_search` might come from an MCP server while the skill teaches the workflow. Most real agents grow both.
+So they aren't rivals; they stack. If you already have a working tool or MCP server, you've done the hard part — the skill is the layer on top that captures the workflow you already know, so the agent applies it consistently instead of re-deriving it every run. A skill might say "use the `notion_search` tool to find the design doc, then…" — `notion_search` is the capability; the skill is the recipe for using it well.
+
+When you're unsure which you're missing *right now*, ask: is the agent unable to do the thing **at all** (it needs a tool), or able but doing it **badly** — wrong approach, wasted turns, ignorant of your conventions (it needs a skill)? Most real agents grow both.
 
 ## But what about RAG?
 
