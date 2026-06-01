@@ -24,6 +24,7 @@ We'll use OpenAI's API throughout. Examples are deliberately minimal — no erro
 Recall the foundation from the agents course: the model has no memory, so you keep appending to a `messages` list and resend the whole thing every turn. That works — and it never stops growing.
 
 ```python
+# growing_context.py
 from openai import OpenAI
 
 client = OpenAI()
@@ -143,6 +144,7 @@ A few things to internalise:
 Give the agent a tool to save facts and it can curate its own memory — deciding, mid-conversation, what's worth keeping. This is the agent loop from [agents.md Part 4](../agents/agents.md) with one extra tool.
 
 ```python
+# memory_agent.py
 from openai import OpenAI
 from pathlib import Path
 import json

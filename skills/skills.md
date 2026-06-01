@@ -26,6 +26,7 @@ We'll use OpenAI's API throughout. Examples are deliberately minimal — no erro
 The simplest way to give an agent instructions is to put them in the system prompt.
 
 ```python
+# describe_csv.py
 from openai import OpenAI
 
 client = OpenAI()
@@ -101,6 +102,7 @@ When summarizing a CSV:
 Now the agent. We give it two tools: `read_file` for loading skills, and `bash` for actually doing work.
 
 ```python
+# skill_agent.py
 from openai import OpenAI
 import json
 import subprocess
@@ -141,7 +143,10 @@ tools = [
     },
 ]
 
-system_prompt = """You are an agent. Before doing a task, check if skills/csv/SKILL.md is relevant and read it if so."""
+system_prompt = (
+    "You are an agent. Before doing a task, check if "
+    "skills/csv/SKILL.md is relevant and read it if so."
+)
 
 # ... standard agent loop here — see ../agents/agents.md Part 4 ...
 ```
