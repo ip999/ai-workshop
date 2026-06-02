@@ -24,11 +24,9 @@ A model, some tools, and a loop. By the end you'll have built one that drives a 
 
 Everything else — coding agents, research agents, support bots — is this loop with different tools.
 
-**Today:**
-1. A completion → 2. A conversation → 3. A tool → 4. **The loop**
-5. Too many tools → 6. An agent with a shell
+**Today** — we present a part, then you build it (six parts, five labs):
 
-We present a part, then you build it. Six parts, five labs.
+1 completion → 2 conversation → 3 a tool → **4 the loop** → 5 too many tools → **6 a shell**
 
 ---
 
