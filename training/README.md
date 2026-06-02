@@ -12,10 +12,10 @@ One lesson maps to one tutorial:
 | # | Lesson | Slides | Tutorial (read + do) |
 |---|--------|--------|----------------------|
 | 1 | From Completions to Agents | [slides/01-agents.md](slides/01-agents.md) | [agents/agents.md](../agents/agents.md) |
-| 2 | From a Function to an MCP Server | _(planned)_ | [mcp/mcp.md](../mcp/mcp.md) |
-| 3 | From a System Prompt to a Skill | _(planned)_ | [skills/skills.md](../skills/skills.md) |
-| 4 | From a Message List to Memory | _(planned)_ | [memory/memory.md](../memory/memory.md) |
-| 5 | Bringing It All Together | _(planned)_ | [capstone/capstone.md](../capstone/capstone.md) |
+| 2 | From a Function to an MCP Server | [slides/02-mcp.md](slides/02-mcp.md) | [mcp/mcp.md](../mcp/mcp.md) |
+| 3 | From a System Prompt to a Skill | [slides/03-skills.md](slides/03-skills.md) | [skills/skills.md](../skills/skills.md) |
+| 4 | From a Message List to Memory | [slides/04-memory.md](slides/04-memory.md) | [memory/memory.md](../memory/memory.md) |
+| 5 | Bringing It All Together | [slides/05-capstone.md](slides/05-capstone.md) | [capstone/capstone.md](../capstone/capstone.md) |
 
 ## The slides are [Marp](https://marp.app)
 

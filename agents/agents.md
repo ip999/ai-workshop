@@ -248,6 +248,8 @@ That's an agent. The model called `get_weather` twice (once for Paris, once for 
 
 **This is the entire pattern.** Everything else — coding agents, research agents, customer support agents — is just this loop with different tools.
 
+A note on words: the model itself only *decides* — it's stateless and can't loop or run a tool on its own. The code around it that runs this loop — calling the model, executing the tool calls it asks for, feeding back the results — is the **harness**. The model plus its harness, pointed at a goal, is the **agent**. So when people say "an LLM that runs tools in a loop," the precise version is: *an LLM, run in a loop by a harness, calling tools to achieve a goal.*
+
 > **🧪 Your turn** — save this as `agent.py` and ask: *"What's the weather in Paris and Tokyo?"*
 >
 > - ✅ The trace shows `get_weather` called twice, the results going back, then one final reply — and the loop exits.
@@ -400,4 +402,4 @@ Standardising that is what **MCP** (the Model Context Protocol) does, and it's t
 - **[OpenAI function calling guide](https://platform.openai.com/docs/guides/function-calling)** — the official reference for the tool-use API we used throughout this lesson, including parallel tool calls and structured outputs.
 - **[Anthropic's MCP announcement](https://www.anthropic.com/news/model-context-protocol)** — background on the protocol the next lesson builds on.
 
-The whole thing — the entire idea of "an agent" — is a loop around a chat completion with tools. Once that clicks, the rest is engineering.
+The whole thing — the entire idea of "an agent" — is a loop around a chat completion with tools, running to achieve a goal. Once that clicks, the rest is engineering.

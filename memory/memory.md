@@ -50,6 +50,11 @@ A few things to internalise:
 
 You need a way to forget.
 
+> **🧪 Your turn** — save the loop above as `growing_context.py` and run it.
+>
+> - ✅ The message count climbs (3 → 5 → 7) and the model still recalls your name — because the whole history is resent.
+> - 🚀 Print an approximate token count each turn to feel the growth.
+
 ## Part 2: Trimming the Window
 
 The crudest way to bound context is a **sliding window**: always keep the system prompt, then only the last few messages.
@@ -78,6 +83,11 @@ A few things to internalise:
 - But it's lossy in the dumbest possible way — it forgets the *oldest* thing, which is often the *most important* thing (the user's name, the original task). It forgets by age, not by relevance.
 
 We can do better than throwing old turns away.
+
+> **🧪 Your turn** — add `trim()` and call it before each request.
+>
+> - ✅ Context stays bounded — but ask "what's my name?" after it scrolls off and the model has lost it.
+> - 🚀 Try different `keep` values and find where the name drops out.
 
 ## Part 3: Summarizing the Past
 
@@ -207,6 +217,11 @@ A few things to internalise:
 - Append-only gets you far, but a complete set pairs `remember` with `forget` and `update` — otherwise memory grows stale and self-contradictory.
 
 That's the whole picture. **Short-term memory** (compaction) keeps one conversation coherent; **long-term memory** (the file the agent writes) lets the agent improve across conversations.
+
+> **🧪 Your turn** — save the memory-tool agent as `memory_agent.py`, run it, then **run it again**.
+>
+> - ✅ The first run writes facts to `memory.md`; the second run greets you already knowing them.
+> - 🚀 Add a `forget` tool, or tell it something it should *not* remember and confirm it doesn't.
 
 ## Recap
 
