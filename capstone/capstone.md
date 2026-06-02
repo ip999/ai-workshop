@@ -36,7 +36,7 @@ the message list (in memory)
 
 ## The loop is the smallest part
 
-Read [agent.py](agent.py) with this in mind: of its ~170 lines of code, the agent *itself* is about two dozen, and most of those are progress prints and safety rails. Strip them away and the entire agent is this:
+Read [agent.py](agent.py) with this in mind: of its ~170 lines of code, the **loop** itself is about two dozen, and most of those are progress prints and safety rails. Strip them away and the whole loop is this:
 
 ```python
 def run_turn(messages):
@@ -64,7 +64,7 @@ Everything else in the file is scaffolding *around* that loop:
 - **memory** — loading the file and compacting the transcript (~30 lines)
 - **the REPL** — reading your input and printing replies (~18 lines)
 
-The harness is small on purpose. The capability lives in the model deciding what to do; the code just runs the loop and carries the tools, sandbox, and memory along for the ride.
+All of that — the loop, the tools, the sandbox, the memory — is the **harness**: the program that runs the model. So `agent.py` *is* the harness; the model is what it runs; together, pointed at a goal, they're the agent (the vocabulary from [agents.md Part 4](../agents/agents.md)). The harness is small on purpose — the capability lives in the model deciding what to do; the code just runs the loop and carries the tools, sandbox, and memory along for the ride.
 
 ## Running it
 
