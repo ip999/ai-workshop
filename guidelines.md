@@ -71,3 +71,16 @@ The tutorials form a linear course — agents → mcp → skills → memory → 
 ## A note on the capstone
 
 The capstone ([capstone/capstone.md](capstone/capstone.md)) is intentionally exempt from the structure above. It's a guided read of one runnable program, not a type-along, so it drops the numbered Parts, the Recap, and the "But what about X?" section in favour of descriptive `##` sections. It keeps the prose voice and the deliberately-minimal ethos, but its job is to show how the concepts *compose* rather than to teach one in isolation. Don't reshape it into the tutorial skeleton.
+
+## Keeping the training materials in sync
+
+The repo ships a classroom layer in [training/](training/README.md) — Marp slides and labs that mirror the self-service tutorials one-to-one (see the table in `training/README.md`). They are a *view* of the tutorials, not a separate source of truth, so they have to be updated alongside the content they present.
+
+When you change a tutorial, update its slide deck and lab **in the same change**:
+
+- Renaming an example file (the `# filename.py` comments) → update the lab step that names it.
+- Adding, removing, or reordering a Part → update the deck's slides and the lab's steps and checkpoints.
+- Changing the lesson order or a `Next:` pointer → update `training/README.md` and the deck's closing slide.
+- Adding a whole new lesson → add a matching `training/slides/NN-*.md` and `training/labs/NN-*.md`, and fill in the `training/README.md` table.
+
+Keep slides skimmable (the instructor talks to them) and labs runnable (goal → steps → checkpoint → stretch). The tutorial remains the full reference both point back to.

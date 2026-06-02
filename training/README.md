@@ -14,7 +14,13 @@ One lesson maps to one tutorial:
 
 ## The slides are [Marp](https://marp.app)
 
-Each deck is plain Markdown with `---` between slides. To present or export:
+**Present from your browser, no setup:** the decks auto-render to GitHub Pages on every push to `main` via [`.github/workflows/slides.yml`](../.github/workflows/slides.yml). Once Pages is enabled (repo **Settings → Pages → Source: GitHub Actions**), present from:
+
+> **https://ip999.github.io/ai-workshop/**
+
+Open a deck, then use arrow keys to navigate, `F` for fullscreen, `P` for presenter view (speaker notes, timer, next-slide preview).
+
+To build or edit locally instead, each deck is plain Markdown with `---` between slides:
 
 - **VS Code:** install the **Marp for VS Code** extension, open a deck, and use the preview / "Export slide deck…".
 - **CLI:** `npx @marp-team/marp-cli@latest slides/01-agents.md --html -o 01-agents.html` (or `--pdf`, `--pptx`).
