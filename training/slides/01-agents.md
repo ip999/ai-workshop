@@ -20,9 +20,9 @@ A model, some tools, and a loop. By the end you'll have built one that drives a 
 
 ## The whole idea, up front
 
-> An agent is an **LLM that runs tools in a loop to achieve a goal**.
+> An agent is an **LLM, run in a loop by a harness, to achieve a goal**.
 
-Everything else — coding agents, research agents, support bots — is this loop with different tools.
+The **LLM** decides each step; the **harness** runs the loop, calls the tools, and holds the memory. Every agent — coding, research, support — is this same loop with different tools.
 
 **Today** — we present a part, then you build it (six parts, five exercises):
 

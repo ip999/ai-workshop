@@ -248,6 +248,8 @@ That's an agent. The model called `get_weather` twice (once for Paris, once for 
 
 **This is the entire pattern.** Everything else — coding agents, research agents, customer support agents — is just this loop with different tools.
 
+A note on words: the model itself only *decides* — it's stateless and can't loop or run a tool on its own. The code around it that runs this loop — calling the model, executing the tool calls it asks for, feeding back the results — is the **harness**. The model plus its harness, pointed at a goal, is the **agent**. So when people say "an LLM that runs tools in a loop," the precise version is: *an LLM, run in a loop by a harness, calling tools to achieve a goal.*
+
 > **🧪 Your turn** — save this as `agent.py` and ask: *"What's the weather in Paris and Tokyo?"*
 >
 > - ✅ The trace shows `get_weather` called twice, the results going back, then one final reply — and the loop exits.

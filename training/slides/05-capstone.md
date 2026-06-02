@@ -20,13 +20,13 @@ One runnable program that fuses everything: an interactive agent with a sandboxe
 
 ## What an agent actually is
 
-> **An LLM that runs tools in a loop to achieve a goal.**
+> **An LLM, run in a loop by a harness, calling tools to achieve a goal.**
 
-- **tools** — it can act, not just talk.
-- **in a loop** — it acts on feedback, step after step.
+- **LLM** — decides the next step; stateless, can't act or loop on its own.
+- **harness** — runs the loop, executes the tools, holds the memory.
 - **to achieve a goal** — there's a stopping condition.
 
-Planning and memory aren't required — they *emerge* from the loop and *enhance* it. The capstone is exactly this definition, made real.
+Planning and memory aren't required — they *emerge* from the loop and *enhance* it. `agent.py` **is** the harness; the model is what it runs.
 
 ---
 
