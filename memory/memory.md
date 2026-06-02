@@ -253,6 +253,7 @@ At that scale, memory *becomes* a retrieval problem: embed each remembered fact,
 - **[tiktoken](https://github.com/openai/tiktoken)** — OpenAI's tokenizer. You need it the moment you want to compact against a token budget rather than a message count.
 - **[MemGPT: Towards LLMs as Operating Systems](https://arxiv.org/abs/2310.08560)** — the paper that framed agent memory as a tiered hierarchy (in-context vs. external), with the model paging facts in and out itself. The conceptual backbone of Part 5.
 - **[Letta](https://docs.letta.com)** — the open-source framework descended from MemGPT, if you'd rather adopt a memory system than hand-roll one.
+- **[Glossary](../GLOSSARY.md)** — definitions for *agent*, *harness*, *tool*, and the rest of the vocabulary this course uses (and where the field hasn't agreed).
 
 An agent without memory meets you fresh every time. Memory is what turns a capable tool into one that knows you.
 

@@ -47,6 +47,18 @@ Empirically, the harness is *most* of the engineering. A reverse-engineering stu
 
 That is exactly what this course shows in miniature: the [capstone](capstone/capstone.md)'s loop is ~12 lines, and the rest of `agent.py` is harness. A *minimal* harness is small on purpose; a *production* one balloons.
 
+## Vibe coding
+
+> Building software with an LLM by describing what you want and running what it produces **without reviewing the code** — leaning on the model on vibes.
+
+Coined by **Andrej Karpathy** (Feb 2025): *"a new kind of coding… where you fully give in to the vibes… and forget that the code even exists."* **Simon Willison** sharpened it ([Not all AI-assisted programming is vibe coding](https://simonwillison.net/2025/Mar/19/vibe-coding/)): the defining trait is *not reviewing the code* — if you read it, test it, and can explain it, that's just **software development** with AI help, not vibe coding. The term is widely diluted to mean "any AI-assisted coding"; we keep Willison's narrower sense. Great for prototypes and throwaways; a liability for code you have to maintain.
+
+## Agentic engineering
+
+> The discipline of *directing* tool-using coding agents to build real software — reviewing, steering, and constraining them — rather than prompting and hoping.
+
+Karpathy's framing (in [From Vibe Coding to Agentic Engineering](https://youtu.be/96jN2OCOfLs)): **vibe coding raises the floor** (anyone can build a prototype); **agentic engineering raises the ceiling** (coordinating powerful, uneven, tool-using agents to ship real software *without shipping garbage*). Related ideas: the **autonomy slider** — you choose how much control to cede, from autocomplete to full agent mode — and **Software 3.0**, where you program the model in natural language and the context window is the lever. Where vibe coding forgets the code exists, agentic engineering is engineering: an agent implements, a human owns the judgment.
+
 ## Other terms, briefly
 
 - **Model / LLM** — the stateless reasoning core. Reads the messages, returns the next step (a tool request or a final answer). Can't loop or act on its own.
@@ -66,3 +78,5 @@ That is exactly what this course shows in miniature: the [capstone](capstone/cap
 - [Addy Osmani — Agent Harness Engineering](https://addyosmani.com/blog/agent-harness-engineering/) — "Agent = Model + Harness."
 - [Dive into Claude Code (VILA-Lab)](https://github.com/VILA-Lab/Dive-into-Claude-Code) — the ~1.6% / ~98.4% analysis.
 - [Lilian Weng — LLM-Powered Autonomous Agents](https://lilianweng.github.io/posts/2023-06-23-agent/) — the older "agent = LLM + planning + memory + tools" view, for contrast.
+- [Simon Willison — Not all AI-assisted programming is vibe coding](https://simonwillison.net/2025/Mar/19/vibe-coding/) — vibe coding = *not* reviewing the code.
+- [Andrej Karpathy — From Vibe Coding to Agentic Engineering](https://youtu.be/96jN2OCOfLs) — "raises the floor / raises the ceiling," the autonomy slider, Software 3.0.

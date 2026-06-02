@@ -1,6 +1,6 @@
 # AI Workshop — Training Materials
 
-Instructor slides for delivering the [AI Workshop](../README.md) in a classroom. The slides front the concepts; delegates then build the examples themselves, working from the **🧪 Your turn** exercises embedded in each tutorial. There's no separate lab sheet — the tutorial *is* the lab.
+Instructor slides for delivering the [AI Workshop](../README.md) in a classroom. The slides front the concepts; delegates then build the examples themselves, working from the **🧪 Your turn** exercises embedded in each tutorial. There's no separate lab sheet — the tutorial *is* the lab. Term definitions (*agent*, *harness*, *scaffold*, *model*, *tool*, …) live in the [glossary](../GLOSSARY.md).
 
 So a lesson has just two layers:
 

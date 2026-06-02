@@ -306,6 +306,7 @@ Tools are the most common and the most useful, which is why we focused on them. 
 - **[gofastmcp.com](https://gofastmcp.com)** — FastMCP's documentation, with guides for client building, HTTP transport, and OAuth.
 - **[Anthropic's MCP announcement](https://www.anthropic.com/news/model-context-protocol)** — the original write-up on why MCP exists and the problem it's trying to solve.
 - **[modelcontextprotocol/servers](https://github.com/modelcontextprotocol/servers)** — a reference collection of MCP servers (filesystem, git, GitHub, Slack, Postgres, and more). Read a couple to see how non-trivial servers are structured.
+- **[Glossary](../GLOSSARY.md)** — definitions for *agent*, *harness*, *tool*, and the rest of the vocabulary this course uses (and where the field hasn't agreed).
 
 Once a tool is wrapped in MCP, it stops being yours — it becomes a building block any agent ecosystem can pick up.
 
