@@ -24,11 +24,9 @@ A model, some tools, and a loop. By the end you'll have built one that drives a 
 
 Everything else — coding agents, research agents, support bots — is this loop with different tools.
 
-**Today:**
-1. A completion → 2. A conversation → 3. A tool → 4. **The loop**
-5. Too many tools → 6. An agent with a shell
+**Today** — we present a part, then you build it (six parts, five exercises):
 
-We present a part, then you build it. Six parts, five labs.
+1 completion → 2 conversation → 3 a tool → **4 the loop** → 5 too many tools → **6 a shell**
 
 ---
 
@@ -51,11 +49,11 @@ print(response.choices[0].message.content)   # Paris.
 
 <!-- _class: lead -->
 
-## 🧪 Lab 1 — `completion.py`
+## 🧪 Your turn — `completion.py`
 
 Run your first completion and confirm the model has no memory.
 
-**Lab 1** in [labs/01-agents.md](../labs/01-agents.md)
+→ exercise at the end of **Part 1** in [agents.md](../../agents/agents.md)
 
 ---
 
@@ -75,11 +73,11 @@ This is the foundation everything else builds on.
 
 <!-- _class: lead -->
 
-## 🧪 Lab 2 — `conversation.py`
+## 🧪 Your turn — `conversation.py`
 
 Resend the whole history and watch *"there"* resolve.
 
-**Lab 2**
+→ exercise at the end of **Part 2**
 
 ---
 
@@ -100,11 +98,11 @@ Response has `tool_calls` instead of `content` → run it → append a `{"role":
 
 <!-- _class: lead -->
 
-## 🧪 Lab 3 — `weather_tool.py`
+## 🧪 Your turn — `weather_tool.py`
 
 The first response has `tool_calls`, **not** `content`. Run the tool, call again.
 
-**Lab 3**
+→ exercise at the end of **Part 3**
 
 ---
 
@@ -130,11 +128,11 @@ while True:
 
 <!-- _class: lead -->
 
-## 🧪 Lab 4 — `agent.py`
+## 🧪 Your turn — `agent.py`
 
 Ask: *"weather in Paris and Tokyo?"* — watch it call the tool twice, then reply.
 
-**Lab 4**
+→ exercise at the end of **Part 4**
 
 ---
 
@@ -168,11 +166,11 @@ One tool, an enormous range of tasks — the core of a real coding agent.
 
 <!-- _class: lead -->
 
-## 🧪 Lab 5 — `shell_agent.py`
+## 🧪 Your turn — `shell_agent.py`
 
 Start the Docker sandbox, then ask the agent to write a file of prime numbers.
 
-**Lab 5**
+→ exercise at the end of **Part 6**
 
 ---
 

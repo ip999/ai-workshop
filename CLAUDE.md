@@ -13,13 +13,17 @@ The course is linear: **agents → mcp → skills → memory → capstone**.
 
 ## Keep the training materials aligned with the course
 
-`training/` is a *presentation layer* over the tutorials, not a separate
-source of truth. **When you change a tutorial, update its matching slide
-deck (`training/slides/`) and lab (`training/labs/`) in the same change**,
-so the two never drift. This applies to renaming an example file, adding /
-removing / reordering a Part, changing an example, or changing the lesson
-order. See guidelines.md → "Keeping the training materials in sync" for the
-specifics, and the mapping table in `training/README.md`.
+The tutorials are the single source of truth: each carries its own hands-on
+exercises inline — **🧪 Your turn** boxes at the end of each Part — and
+`training/slides/` is a presentation layer over them. There is **no separate
+`labs/` folder**.
+
+**When you change a tutorial, update its 🧪 Your turn box and its slide deck
+in the same change**, so content, exercise, and slides never drift. This
+applies to renaming an example file, adding / removing / reordering a Part,
+changing an example, or changing the lesson order. See guidelines.md →
+"Keeping the training materials in sync" for the specifics, and the table in
+`training/README.md`.
 
 ## Conventions
 

@@ -74,13 +74,13 @@ The capstone ([capstone/capstone.md](capstone/capstone.md)) is intentionally exe
 
 ## Keeping the training materials in sync
 
-The repo ships a classroom layer in [training/](training/README.md) — Marp slides and labs that mirror the self-service tutorials one-to-one (see the table in `training/README.md`). They are a *view* of the tutorials, not a separate source of truth, so they have to be updated alongside the content they present.
+The repo ships a classroom layer: Marp slides in [training/](training/README.md), plus **🧪 Your turn** exercises embedded at the end of each tutorial Part. There is no separate labs folder — the tutorial is both the self-service course *and* the lab, so the hands-on lives in the same file as the content it exercises.
 
-When you change a tutorial, update its slide deck and lab **in the same change**:
+When you change a tutorial, keep these in lockstep **in the same change**:
 
-- Renaming an example file (the `# filename.py` comments) → update the lab step that names it.
-- Adding, removing, or reordering a Part → update the deck's slides and the lab's steps and checkpoints.
+- Adding, removing, or reordering a Part → update its 🧪 Your turn box and the matching deck (its part slide and its Your-turn checkpoint slide).
+- Renaming an example file (the `# filename.py` comments) → update the Your turn box and the deck slide that name it.
 - Changing the lesson order or a `Next:` pointer → update `training/README.md` and the deck's closing slide.
-- Adding a whole new lesson → add a matching `training/slides/NN-*.md` and `training/labs/NN-*.md`, and fill in the `training/README.md` table.
+- Adding a whole new lesson → add 🧪 Your turn boxes to its tutorial, add a matching `training/slides/NN-*.md`, and fill in the `training/README.md` table.
 
-Keep slides skimmable (the instructor talks to them) and labs runnable (goal → steps → checkpoint → stretch). The tutorial remains the full reference both point back to.
+A Your turn box is short — **do it → ✅ how you know it worked → 🚀 a stretch** — as a blockquote at the end of the Part. Keep slides skimmable; the tutorial is the full reference. (The capstone has no Parts, so it carries no Your-turn boxes — its "Running it" section is the hands-on.)

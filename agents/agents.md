@@ -47,6 +47,11 @@ A few things to internalise:
 - `messages` is a list of `{"role": ..., "content": ...}` dicts. Roles are `system` (instructions), `user` (you), and `assistant` (the model).
 - The response object has a lot of fields. For now we only care about `.choices[0].message.content`.
 
+> **🧪 Your turn** — save the block above as `completion.py` and run it.
+>
+> - ✅ It prints a one-line answer (e.g. `Paris.`).
+> - 🚀 Ask a follow-up in a second call *without* resending the first turn — watch it lose the thread. That's statelessness.
+
 ## Part 2: A Multi-Turn Conversation
 
 Since the model has no memory, *you* are the memory. To have a conversation, you keep appending to the `messages` list yourself.
@@ -76,6 +81,11 @@ print("Assistant:", response.choices[0].message.content)
 The model can answer "what's the population there?" only because we sent the full prior conversation. Drop the history and it has no idea what "there" refers to.
 
 This is the foundation. Everything else in this course is built on top of this pattern.
+
+> **🧪 Your turn** — save this as `conversation.py` and run it.
+>
+> - ✅ The model answers "what's the population there?" — it resolved "there" from the history you sent.
+> - 🚀 Delete the line that appends the assistant reply, rerun, and watch the answer degrade.
 
 ## Part 3: Adding a Tool
 
@@ -156,6 +166,11 @@ print(response.choices[0].message.content)
 
 That's the full picture: ask → model requests tool → you run tool → send result → model answers.
 
+> **🧪 Your turn** — save both blocks as `weather_tool.py` (the second continues the file) and run it.
+>
+> - ✅ The first response has no `content` — only `tool_calls`. After you run the tool and call again, you get the final sentence.
+> - 🚀 Add a second tool (e.g. `get_time(city)`) and ask a question that needs both.
+
 ## Part 4: An Agent (the Loop)
 
 Here's the insight that turns "a model with tools" into "an agent":
@@ -232,6 +247,11 @@ Run it and you can watch the round-trip the prose below describes:
 That's an agent. The model called `get_weather` twice (once for Paris, once for Tokyo), saw both results, then wrote a final reply. The loop exits because the final reply has no tool calls.
 
 **This is the entire pattern.** Everything else — coding agents, research agents, customer support agents — is just this loop with different tools.
+
+> **🧪 Your turn** — save this as `agent.py` and ask: *"What's the weather in Paris and Tokyo?"*
+>
+> - ✅ The trace shows `get_weather` called twice, the results going back, then one final reply — and the loop exits.
+> - 🚀 Add a counter to see how many times the loop goes around.
 
 ## Part 5: The Problem with Lots of Tools
 
@@ -346,6 +366,11 @@ while True:
 Run this and watch what happens. The model will probably write a small Python snippet to generate primes, pipe the output into `hello.txt`, then verify with `cat`. With one tool, it can do an enormous range of things.
 
 This is closer to how real coding agents work. Pair this `bash` tool with `read_file`, `write_file`, and `edit_file` (also implemented as small functions calling `docker exec`) and you have the core of a capable agent in under 100 lines.
+
+> **🧪 Your turn** — start the sandbox (above), save the agent as `shell_agent.py`, and ask it to create `hello.txt` with the first 10 prime numbers.
+>
+> - ✅ Watch the `$ command` lines as it writes and verifies the file; confirm on your host with `cat /tmp/agent-work/hello.txt`.
+> - 🚀 Ask it to fetch something with `curl`, or to count words in a file you drop into `/tmp/agent-work`.
 
 ## Recap
 
