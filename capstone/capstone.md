@@ -64,7 +64,7 @@ Everything else in the file is scaffolding *around* that loop:
 - **memory** — loading the file and compacting the transcript (~30 lines)
 - **the input loop** — reading your input and printing replies (~18 lines)
 
-All of that — the loop, the tools, the sandbox, the memory — is the **harness**: the program that runs the model. So `agent.py` *is* the harness; the model is what it runs; together, pointed at a goal, they're the agent (the vocabulary from [agents.md Part 4](../agents/agents.md)). The harness is small on purpose — the capability lives in the model deciding what to do; the code just runs the loop and carries the tools, sandbox, and memory along for the ride.
+All of that — the loop, the tools, the sandbox, the memory — is the **harness**: the program that runs the model. So `agent.py` *is* the harness; the model is what it runs; together, pointed at a goal, they're the agent (the vocabulary from [agents.md Part 4](../agents/agents.md), defined fully in the [glossary](../GLOSSARY.md)). The harness is small on purpose — the capability lives in the model deciding what to do; the code just runs the loop and carries the tools, sandbox, and memory along for the ride.
 
 ## Running it
 

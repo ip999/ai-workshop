@@ -84,3 +84,7 @@ When you change a tutorial, keep these in lockstep **in the same change**:
 - Adding a whole new lesson → add 🧪 Your turn boxes to its tutorial, add a matching `training/slides/NN-*.md`, and fill in the `training/README.md` table.
 
 A Your turn box is short — **do it → ✅ how you know it worked → 🚀 a stretch** — as a blockquote at the end of the Part. Keep slides skimmable; the tutorial is the full reference. (The capstone has no Parts, so it carries no Your-turn boxes — its "Running it" section is the hands-on.)
+
+## A note on terminology
+
+Core terms — *agent*, *harness*, *model*, *tool*, *loop*, *workflow*, *skill*, *memory*, *MCP* — are defined in [GLOSSARY.md](GLOSSARY.md), which also flags where the field hasn't reached consensus. Use those definitions consistently across tutorials and slides; if you sharpen a definition, update the glossary so it stays the single source of truth.

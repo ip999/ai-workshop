@@ -22,7 +22,7 @@ A model, some tools, and a loop. By the end you'll have built one that drives a 
 
 > An agent is an **LLM, run in a loop by a harness, calling tools to achieve a goal**.
 
-The **LLM** decides each step; the **harness** runs the loop, calls the tools, and holds the memory. Every agent — coding, research, support — is this same loop with different tools.
+The **LLM** decides each step; the **harness** runs the loop, calls the tools, and holds the memory. Every agent — coding, research, support — is this same loop with different tools. 📖 [glossary](../../GLOSSARY.md)
 
 **Today** — we present a part, then you build it (six parts, five exercises):
 

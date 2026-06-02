@@ -35,3 +35,6 @@ changing an example, or changing the lesson order. See guidelines.md →
   parse — and ideally run the pure-Python ones (`build_skill_index`,
   `summarize.py`, `trim`) and that `capstone/agent.py` compiles.
 - The slides publish to GitHub Pages via `.github/workflows/slides.yml`.
+- Canonical term definitions (agent, harness, model, tool, loop, …) live in
+  `GLOSSARY.md` — it states the definitions the course uses and is explicit
+  that the field has no single consensus. Keep usage consistent with it.

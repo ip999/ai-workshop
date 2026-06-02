@@ -23,10 +23,10 @@ One runnable program that fuses everything: an interactive agent with a sandboxe
 > **An LLM, run in a loop by a harness, calling tools to achieve a goal.**
 
 - **LLM** — decides the next step; stateless, can't act or loop on its own.
-- **harness** — runs the loop, executes the tools, holds the memory.
+- **harness** — runs the loop, executes the tools, holds the memory. (Its behaviour-defining part — prompt, tool descriptions, memory — is sometimes called the **scaffold**.)
 - **to achieve a goal** — there's a stopping condition.
 
-Planning and memory aren't required — they *emerge* from the loop and *enhance* it. `agent.py` **is** the harness; the model is what it runs.
+Planning and memory aren't required — they *emerge* from the loop and *enhance* it. `agent.py` **is** the harness; the model is what it runs. 📖 [glossary](../../GLOSSARY.md)
 
 ---
 
