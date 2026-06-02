@@ -6,7 +6,7 @@ It gives a single model:
   - short-term memory: the running conversation is compacted when it gets long
   - long-term memory: durable facts written to a file and reloaded next run
 
-Think of it as the smallest honest sketch of a coding-style agent. It is
+Think of it as the smallest honest sketch of a general-purpose terminal agent. It is
 deliberately minimal: no auth, no streaming, error handling only where the loop
 would otherwise crash.
 
@@ -151,7 +151,7 @@ def _line(m):
 def maybe_compact(messages):
     """Fold an over-long transcript into one summary, keeping it well-formed.
 
-    Called only at REPL boundaries (no tool call is pending), so dropping the raw
+    Called only at turn boundaries (no tool call is pending), so dropping the raw
     turns can never orphan a tool result from the assistant message that asked
     for it — the failure mode the OpenAI API rejects.
     """

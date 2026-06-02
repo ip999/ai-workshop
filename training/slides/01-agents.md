@@ -20,7 +20,7 @@ A model, some tools, and a loop. By the end you'll have built one that drives a 
 
 ## The whole idea, up front
 
-> An agent is an **LLM, run in a loop by a harness, to achieve a goal**.
+> An agent is an **LLM, run in a loop by a harness, calling tools to achieve a goal**.
 
 The **LLM** decides each step; the **harness** runs the loop, calls the tools, and holds the memory. Every agent — coding, research, support — is this same loop with different tools.
 
@@ -150,9 +150,9 @@ There's a better way. *(No lab here — this is the motivation for the shell.)*
 
 ## Part 6 — An Agent with a Shell
 
-Give the agent **one general tool**: a sandboxed shell. Now it can do almost anything `bash` can.
+Hand the agent a **general** tool: a shell. A quick and dirty way to grant wide-reaching power without defining many tools — one tool, and it can do almost anything `bash` can.
 
-> ⚠️ **Never run agent-generated commands on your machine.** Use Docker.
+> ⚠️ **Powerful means dangerous.** A shell can run *anything* — don't run it in your own user context. Sandbox it; we use Docker (a choice, not a requirement).
 
 ```python
 def bash(command):
@@ -160,7 +160,7 @@ def bash(command):
         "bash", "-c", command], capture_output=True, text=True).stdout
 ```
 
-One tool, an enormous range of tasks — the core of a real coding agent.
+One lazy tool, an enormous range of tasks.
 
 ---
 

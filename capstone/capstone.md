@@ -1,6 +1,6 @@
 # Bringing It All Together: A Minimal Agent
 
-The other pieces in this repo each teach one idea in isolation. This one wires them into a single program you can actually talk to: a small interactive agent with a sandboxed shell, a few file tools, and a memory that survives between runs. It's the smallest honest sketch of a coding-style assistant — a stripped-down cousin of the agents people run in their terminals.
+The other pieces in this repo each teach one idea in isolation. This one wires them into a single program you can actually talk to: a small interactive agent with a sandboxed shell, a few file tools, and a memory that survives between runs. It's the smallest honest sketch of a general-purpose terminal agent — a stripped-down cousin of the agents people run in their terminals.
 
 Unlike the tutorials, this isn't a type-along. The whole thing is in [agent.py](agent.py); read it top to bottom in one sitting (~220 lines, ~170 of them code) and this page explains how the parts fit.
 
@@ -62,7 +62,7 @@ Everything else in the file is scaffolding *around* that loop:
 - **the sandbox** — starting the container and mounting `/workspace` (~25 lines)
 - **the tools** — four small functions, plus the JSON schemas that describe them to the model (the schemas alone are longer than the loop)
 - **memory** — loading the file and compacting the transcript (~30 lines)
-- **the REPL** — reading your input and printing replies (~18 lines)
+- **the input loop** — reading your input and printing replies (~18 lines)
 
 All of that — the loop, the tools, the sandbox, the memory — is the **harness**: the program that runs the model. So `agent.py` *is* the harness; the model is what it runs; together, pointed at a goal, they're the agent (the vocabulary from [agents.md Part 4](../agents/agents.md)). The harness is small on purpose — the capability lives in the model deciding what to do; the code just runs the loop and carries the tools, sandbox, and memory along for the ride.
 
