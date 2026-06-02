@@ -1,7 +1,7 @@
 """A minimal interactive agent that brings the whole workshop together.
 
 It gives a single model:
-  - an interactive REPL (instruction -> answer, in a loop)
+  - an interactive loop (instruction -> answer)
   - a sandboxed Linux shell, plus read_file / write_file convenience tools
   - short-term memory: the running conversation is compacted when it gets long
   - long-term memory: durable facts written to a file and reloaded next run
