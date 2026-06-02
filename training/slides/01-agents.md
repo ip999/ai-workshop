@@ -28,6 +28,8 @@ Everything else — coding agents, research agents, support bots — is this loo
 1. A completion → 2. A conversation → 3. A tool → 4. **The loop**
 5. Too many tools → 6. An agent with a shell
 
+We present a part, then you build it. Six parts, five labs.
+
 ---
 
 ## Part 1 — A Completion
@@ -47,6 +49,16 @@ print(response.choices[0].message.content)   # Paris.
 
 ---
 
+<!-- _class: lead -->
+
+## 🧪 Lab 1 — `completion.py`
+
+Run your first completion and confirm the model has no memory.
+
+**Lab 1** in [labs/01-agents.md](../labs/01-agents.md)
+
+---
+
 ## Part 2 — A Multi-Turn Conversation
 
 The model forgets, so **you are the memory**: keep appending to `messages` and resend the whole list every turn.
@@ -63,11 +75,11 @@ This is the foundation everything else builds on.
 
 <!-- _class: lead -->
 
-## 🧪 Lab checkpoint 1
+## 🧪 Lab 2 — `conversation.py`
 
-Build `completion.py` and `conversation.py`.
+Resend the whole history and watch *"there"* resolve.
 
-**Labs 1–2** in [labs/01-agents.md](../labs/01-agents.md)
+**Lab 2**
 
 ---
 
@@ -83,6 +95,16 @@ tools = [{"type": "function", "function": {
 ```
 
 Response has `tool_calls` instead of `content` → run it → append a `{"role": "tool", ...}` message → ask again.
+
+---
+
+<!-- _class: lead -->
+
+## 🧪 Lab 3 — `weather_tool.py`
+
+The first response has `tool_calls`, **not** `content`. Run the tool, call again.
+
+**Lab 3**
 
 ---
 
@@ -108,12 +130,11 @@ while True:
 
 <!-- _class: lead -->
 
-## 🧪 Lab checkpoint 2
+## 🧪 Lab 4 — `agent.py`
 
-Build `weather_tool.py`, then `agent.py`.
-Ask it: *"weather in Paris and Tokyo?"*
+Ask: *"weather in Paris and Tokyo?"* — watch it call the tool twice, then reply.
 
-**Labs 3–4**
+**Lab 4**
 
 ---
 
@@ -125,7 +146,7 @@ Add a tool per task — `read_pdf`, `send_email`, `resize_image`, … 30 more �
 - The model gets **confused** about which to use.
 - New capability = new code, schema, tests, redeploy.
 
-There's a better way.
+There's a better way. *(No lab here — this is the motivation for the shell.)*
 
 ---
 
@@ -147,10 +168,9 @@ One tool, an enormous range of tasks — the core of a real coding agent.
 
 <!-- _class: lead -->
 
-## 🧪 Lab checkpoint 3
+## 🧪 Lab 5 — `shell_agent.py`
 
-Start the Docker sandbox, build `shell_agent.py`,
-and ask it to write a file of prime numbers.
+Start the Docker sandbox, then ask the agent to write a file of prime numbers.
 
 **Lab 5**
 
