@@ -1,0 +1,71 @@
+name: Build training slides
+
+# Renders the Marp decks in training/slides/ to HTML and publishes them to
+# GitHub Pages, so they can be presented from a browser with no local setup.
+#
+# One-time setup: repo Settings -> Pages -> Source: "GitHub Actions".
+# After that, every push to main that touches the slides redeploys, and the
+# decks are live at https://<owner>.github.io/<repo>/
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'training/slides/**'
+      - '.github/workflows/slides.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Render decks to HTML
+        run: |
+          mkdir -p site
+          npx --yes @marp-team/marp-cli@latest \
+            --input-dir training/slides --output site --html
+
+      - name: Build an index page
+        run: |
+          {
+            echo '<!doctype html><html lang="en"><meta charset="utf-8">'
+            echo '<title>AI Workshop — Training Slides</title>'
+            echo '<style>body{font:16px/1.6 system-ui,sans-serif;max-width:42rem;margin:4rem auto;padding:0 1rem}a{display:block;padding:.4rem 0}</style>'
+            echo '<h1>AI Workshop — Training Slides</h1>'
+            echo '<p>Open a deck, then use arrow keys to navigate, <kbd>F</kbd> for fullscreen, <kbd>P</kbd> for presenter view.</p>'
+            for f in site/*.html; do
+              base=$(basename "$f")
+              [ "$base" = "index.html" ] && continue
+              echo "<a href=\"$base\">$(basename "$f" .html)</a>"
+            done
+            echo '<p style="margin-top:2rem"><a href="https://github.com/ip999/ai-workshop/tree/main/training">Labs &amp; instructor notes &rarr;</a></p>'
+          } > site/index.html
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
