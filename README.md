@@ -2,6 +2,8 @@
 
 A hands-on course on building LLM agents, plus a capstone that wires the ideas together. Each lesson teaches **one concept** through the smallest code that demonstrates it — no error handling, no abstractions, just the *shape* of the idea. It's linear: each lesson builds on the one before, so read them in order.
 
+Fuzzy on *agent* vs *harness* vs *tool*? The [glossary](GLOSSARY.md) defines the terms this course uses — and is honest about where the field hasn't agreed.
+
 ## Run it in the browser (no local setup)
 
 [![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/ip999/ai-workshop)
