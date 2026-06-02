@@ -34,7 +34,7 @@ Each lesson assumes the ones before it and ends pointing to the next.
 
 ## The capstone
 
-**[Bringing It All Together](capstone/capstone.md)** — a single runnable agent ([agent.py](capstone/agent.py)) with an interactive REPL (Read-Evaluate-Print-Loop), a sandboxed shell, file tools, and memory that survives between runs. The smallest honest sketch of a coding-style assistant, with each part traced back to the tutorial it came from.
+**[Bringing It All Together](capstone/capstone.md)** — a single runnable agent ([agent.py](capstone/agent.py)) with an interactive loop (type a request, get an answer), a sandboxed shell, file tools, and memory that survives between runs. The smallest honest sketch of a coding-style assistant, with each part traced back to the tutorial it came from.
 
 ## For contributors
 
