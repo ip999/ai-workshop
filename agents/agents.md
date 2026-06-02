@@ -280,9 +280,9 @@ There's a better way.
 
 ## Part 6: An Agent with a Shell
 
-Instead of a tool for every task, give the agent **one general tool**: a sandboxed shell. Now it can do anything bash can do — which is almost anything.
+Instead of a tool for every task, hand the agent a **general** one: a shell. Giving it `bash` is a quick and dirty way to grant wide-reaching, powerful capabilities without defining many separate tools — with one tool it can do almost anything `bash` can. (Real coding agents like Claude Code curate a handful of specific tools — read, edit, grep — *alongside* a shell; a single shell is just the lazy version. Part 5's point is that you don't need thirty *niche* tools, not that one tool is best.)
 
-First, the sandbox. **Never run agent-generated commands directly on your machine.** We'll use Docker.
+It's also potentially dangerous: a shell lets the model run *anything*. You especially don't want that running in your own user context, where it could touch your real files and credentials — so the safer option is to run it somewhere isolated. We'll use Docker here, but that's just a convenient choice, not a requirement; any sandbox that keeps agent-generated commands off your machine does the job.
 
 ```bash
 # Create a working directory on the host, then start a long-running container
