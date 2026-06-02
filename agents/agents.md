@@ -400,4 +400,4 @@ Standardising that is what **MCP** (the Model Context Protocol) does, and it's t
 - **[OpenAI function calling guide](https://platform.openai.com/docs/guides/function-calling)** — the official reference for the tool-use API we used throughout this lesson, including parallel tool calls and structured outputs.
 - **[Anthropic's MCP announcement](https://www.anthropic.com/news/model-context-protocol)** — background on the protocol the next lesson builds on.
 
-The whole thing — the entire idea of "an agent" — is a loop around a chat completion with tools. Once that clicks, the rest is engineering.
+The whole thing — the entire idea of "an agent" — is a loop around a chat completion with tools, running to achieve a goal. Once that clicks, the rest is engineering.

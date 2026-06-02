@@ -48,6 +48,11 @@ A few things to internalise:
 - This works fine for a sentence or two of guidance.
 - Every token in the system prompt is paid for on every API call, and competes for the model's attention with everything else in context.
 
+> **🧪 Your turn** — save the snippet above as `describe_csv.py` and run it.
+>
+> - ✅ The reply follows the system prompt's format (row count, columns, example row).
+> - 🚀 Change the system prompt and watch the output shape change with it.
+
 ## Part 2: A Long System Prompt
 
 What happens when you want the agent to know how to handle CSVs, *and* PDFs, *and* git operations, *and* your team's deployment conventions, *and* how to fill out expense reports?
@@ -255,6 +260,11 @@ For more complex filtering or transformation, write your own Python using the `c
 Now when the agent reads SKILL.md, it learns that `summarize.py` exists and how to invoke it. It uses `bash` to run the script. The skill author has done the hard part — figured out delimiter sniffing, picked the right library — once, and every future agent invocation benefits.
 
 This is the unlock. A skill is *frozen expertise* — the trial-and-error you'd otherwise repeat every conversation, packaged so the agent gets it right the first time.
+
+> **🧪 Your turn** — create `skills/csv/` with `SKILL.md` and `summarize.py`, then run `python skills/csv/summarize.py <a-csv>`.
+>
+> - ✅ It prints row count, columns, an example row, and stats for numeric columns.
+> - 🚀 Wire it into the indexed agent (Part 4) and ask it to summarize a CSV — watch it `cat` the SKILL.md, then run the script.
 
 ## Part 6: Writing a Description That Triggers
 

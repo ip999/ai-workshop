@@ -75,6 +75,11 @@ A few things to internalise:
 
 That last point is the gap MCP fills.
 
+> **🧪 Your turn** — save the FastAPI version as `weather_api.py`, run `uvicorn weather_api:app --port 8000`, and `curl "http://localhost:8000/weather?city=Paris"`.
+>
+> - ✅ You get the weather string back over HTTP.
+> - 🚀 Open `http://localhost:8000/openapi.json` — the schema FastAPI generated from your type hints.
+
 ## Part 3: The Same Function as an MCP Server (FastMCP)
 
 MCP — Model Context Protocol — is a standard for exposing tools to agents. FastMCP is to MCP roughly what FastAPI is to HTTP: a decorator-driven library that wraps your functions.
@@ -117,6 +122,11 @@ def get_weather(city: str):            def get_weather(city: str) -> str:
 The function is identical. The decorator changed. **That's the whole conceptual leap.**
 
 What did FastMCP do that FastAPI didn't? It made the tool *discoverable in a way agents understand*. Any MCP-compatible agent can connect to this server and ask "what tools do you have?" and get back a structured list of names, descriptions, and JSON schemas — without you writing any of that yourself. The model on the other end gets exactly the tool definitions it needs to start calling them.
+
+> **🧪 Your turn** — save the FastMCP version as `weather_mcp.py` and run `python weather_mcp.py`.
+>
+> - ✅ It starts and waits on stdio with no error — the same function, now an MCP server.
+> - 🚀 Diff it against `weather_api.py`: same function, only the decorator changed.
 
 ## Part 4: Calling a Real API
 
@@ -179,6 +189,11 @@ if __name__ == "__main__":
 ```
 
 That's it. Both tools are now available to any agent that connects. Notice that `who_is_in_space` takes no arguments — FastMCP handles the empty-parameter case the same way as everything else.
+
+> **🧪 Your turn** — add `who_is_in_space` to `weather_mcp.py` so it exposes two tools.
+>
+> - ✅ Both tools are defined; `who_is_in_space` takes no arguments.
+> - 🚀 Add a third tool of your own (a stock price, a joke API, …).
 
 ## Part 6: Connecting an Agent
 
@@ -250,6 +265,11 @@ The server generated that definition from your function — the `name` from the 
 ```
 
 The model never sees this plumbing — it just sees tool schemas and emits tool calls, exactly as in the agents course. MCP is the layer that carries these messages between your agent and the server.
+
+> **🧪 Your turn** — save the client as `client.py` and run it against your server.
+>
+> - ✅ `list_tools()` returns your tools — name, description, and a JSON schema you never hand-wrote.
+> - 🚀 Point Claude Desktop or Cursor at the server and call the tools from a chat.
 
 ## Recap
 

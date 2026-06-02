@@ -20,7 +20,7 @@ A model, some tools, and a loop. By the end you'll have built one that drives a 
 
 ## The whole idea, up front
 
-> An agent is a **loop around a chat completion with tools**.
+> An agent is an **LLM that runs tools in a loop to achieve a goal**.
 
 Everything else — coding agents, research agents, support bots — is this loop with different tools.
 
