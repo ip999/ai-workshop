@@ -114,4 +114,4 @@ Each of these is a natural extension, and each already has a home in this repo:
 - **Harden the sandbox.** Docker is fine for learning; decide what network access it gets, and look at microVMs for anything real.
 - **Grow the memory.** Add `forget` and `update`, move from a flat file to one fact per record, and compact on a token budget rather than a message count — the next-steps from the [memory course](../memory/memory.md).
 
-Strip away the production concerns and a useful agent is a short loop around a chat completion: tools to act, a sandbox to act safely, and memory so it doesn't meet you as a stranger every time. Everything else is engineering.
+Strip away the production concerns and a useful agent is a short loop around a chat completion: tools to act, a sandbox to act safely, and memory so it doesn't meet you as a stranger every time — all running to achieve a goal. Everything else is engineering.
