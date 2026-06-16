@@ -27,7 +27,7 @@ Each tutorial lists its own `pip install` line at the top, since the dependencie
 
 The lessons build the agent in layers — tools, then instructions, then state:
 
-1. **[From Completions to Agents](agents/agents.md)** — start here. What an "agent" actually is: a model, some tools, and a loop. Ends with an agent driving a sandboxed shell.
+1. **[From Completions to Agents](agents/agents.md)** — start here. What an "agent" actually is: a model, some tools, and a loop that pursues a goal. Ends with an agent driving a sandboxed shell.
 2. **[From a Function to an MCP Server](mcp/mcp.md)** — where tools come from when you didn't write them: expose tools over the Model Context Protocol so any agent can use them.
 3. **[From a System Prompt to a Skill](skills/skills.md)** — give the agent durable, reusable know-how it loads from disk on demand, instead of an ever-growing system prompt.
 4. **[From a Message List to Memory](memory/memory.md)** — short-term memory (compaction) and long-term memory (a file the agent writes), so the agent stays coherent and remembers you across sessions.
