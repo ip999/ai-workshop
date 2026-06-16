@@ -14,7 +14,7 @@ footer: 'From Completions to Agents'
 
 ### Lesson 1 — what an "agent" actually is
 
-A model, some tools, and a loop. By the end you'll have built one that drives a sandboxed shell.
+A model, some tools, and a loop that pursues a goal. By the end you'll have built one that drives a sandboxed shell.
 
 ---
 
