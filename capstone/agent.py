@@ -61,7 +61,11 @@ def ensure_sandbox():
 # --- tools ---------------------------------------------------------------------
 
 def bash(command):
-    """Run a shell command in the sandbox and return combined stdout/stderr."""
+    """Run a shell command in the sandbox and return combined stdout/stderr.
+
+    Args:
+        command: Shell command to execute inside the sandbox container.
+    """
     r = subprocess.run(
         ["docker", "exec", SANDBOX, "bash", "-c", command],
         capture_output=True, text=True, timeout=120,
@@ -71,12 +75,23 @@ def bash(command):
 
 
 def read_file(path):
+    """Read a file from the sandbox by absolute path.
+
+    Args:
+        path: Absolute path to the file inside the sandbox, e.g. /workspace/notes.txt.
+    """
     r = subprocess.run(["docker", "exec", SANDBOX, "cat", path],
                        capture_output=True, text=True)
     return r.stdout[:4000] if r.returncode == 0 else f"Error: {r.stderr.strip()}"
 
 
 def write_file(path, content):
+    """Write (overwrite) a file in the sandbox with the given content.
+
+    Args:
+        path: Absolute path to the file to write inside the sandbox.
+        content: Text content to write.
+    """
     subprocess.run(
         ["docker", "exec", "-i", SANDBOX, "bash", "-c", f"cat > {shlex.quote(path)}"],
         input=content, text=True, check=True,
@@ -85,7 +100,11 @@ def write_file(path, content):
 
 
 def remember(fact):
-    """Append a durable fact to the host-side memory file."""
+    """Append a durable fact to the host-side memory file.
+
+    Args:
+        fact: Fact string to persist, e.g. a preference or project decision.
+    """
     with MEMORY_FILE.open("a") as f:
         f.write(f"- {fact}\n")
     return f"Remembered: {fact}"
@@ -143,6 +162,11 @@ def system_prompt():
 
 
 def _line(m):
+    """Format a message as a single "role: content" line for summarization.
+
+    Args:
+        m: Message as a dict or object with role and content fields.
+    """
     role = m["role"] if isinstance(m, dict) else m.role
     content = (m.get("content") if isinstance(m, dict) else m.content) or ""
     return f"{role}: {content}"
@@ -154,6 +178,9 @@ def maybe_compact(messages):
     Called only at turn boundaries (no tool call is pending), so dropping the raw
     turns can never orphan a tool result from the assistant message that asked
     for it — the failure mode the OpenAI API rejects.
+
+    Args:
+        messages: Full conversation list starting with the system prompt.
     """
     if len(messages) <= COMPACT_AFTER:
         return messages
@@ -171,7 +198,11 @@ def maybe_compact(messages):
 # --- the loop ------------------------------------------------------------------
 
 def run_turn(messages):
-    """Run the agent loop until it produces a normal (non-tool) reply."""
+    """Run the agent loop until it produces a normal (non-tool) reply.
+
+    Args:
+        messages: Conversation list (mutated in place); must start with a system message.
+    """
     for _ in range(25):                      # iteration cap — a basic safety rail
         msg = client.chat.completions.create(
             model=MODEL, messages=messages, tools=TOOLS,

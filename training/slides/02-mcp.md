@@ -112,7 +112,11 @@ Swap the hardcoded string for a real call. The **docstring becomes the tool's de
 ```python
 @mcp.tool
 def get_weather(city: str) -> str:
-    """Get the current weather for a city."""
+    """Get the current weather for a city.
+
+    Args:
+        city: City name, optionally with country, e.g. "Paris" or "Paris, US".
+    """
     return httpx.get(f"https://wttr.in/{city}?format=3").text.strip()
 ```
 
