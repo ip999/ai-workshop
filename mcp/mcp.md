@@ -141,7 +141,11 @@ mcp = FastMCP("weather")
 
 @mcp.tool
 def get_weather(city: str) -> str:
-    """Get the current weather for a city."""
+    """Get the current weather for a city.
+
+    Args:
+        city: City name, optionally with country, e.g. "Paris" or "Paris, US".
+    """
     response = httpx.get(f"https://wttr.in/{city}?format=3")
     return response.text.strip()
 
@@ -173,7 +177,11 @@ mcp = FastMCP("weather-and-space")
 
 @mcp.tool
 def get_weather(city: str) -> str:
-    """Get the current weather for a city."""
+    """Get the current weather for a city.
+
+    Args:
+        city: City name, optionally with country, e.g. "Paris" or "Paris, US".
+    """
     response = httpx.get(f"https://wttr.in/{city}?format=3")
     return response.text.strip()
 
